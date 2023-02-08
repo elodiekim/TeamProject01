@@ -2,6 +2,5 @@ const {Router} =require ('express');
 const login = require('../../services/user/login') 
 
 const router = Router()
-
-router.get('/',login);
+router.post('/',login);
 module.exports = router

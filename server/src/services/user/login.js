@@ -31,6 +31,7 @@ const login = async (req,res)=>{
         // console.log(refresh_token)
         res.cookie("access_token",access_token)
         await updateRefreshToken(user._id,refresh_token)
+        
         return res.status(200).send({message:"로그인 성공",Access_token:access_token})
 
     } catch (error) {

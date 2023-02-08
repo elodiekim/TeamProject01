@@ -11,15 +11,25 @@ function LoginForm () {
   const [password, setPassword] = useState('');
   const [data, setData] = useState([]);
 
+
   const loginHandler = (e) => {
     e.preventDefault();
 
     //데이터를 받아오기 때문에 post
-    
-    axios.get("/api/signin",{email:email,password:password})
-      .then((res) => {
-        console.log('성공');
-      }).catch((err) => {console.log(err)})
+    //비동기처리로 쿠키를 저장해야함;; 
+    (async()=>{
+      // 데이터를 보낼 수 있는 형식으로 라우터를 바꿨음
+      // server/router/login => router.get에서 router.post로 변경
+      await axios.post(
+      'http://localhost:5000/signin',
+      {email:email,password:password},
+      //다른 포트간에 쿠키를 주고받을때 withCredentials는 필수.
+      //server/app.js 또한 cors로 withCredentials를 적용중.
+      { withCredentials: true }
+      ).then((res) => {
+        console.log(res.data)
+      }).catch(e=>console.log(e));})()
+  
   }
 
   return (

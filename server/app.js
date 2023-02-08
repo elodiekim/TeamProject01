@@ -11,5 +11,12 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 
+
+const cors = require('cors');
+app.use(cors({
+    origin: true,
+    credentials: true
+  }));
+
 const routers = require ('./src/routes/index.js')
-app.use('/api',routers)
+app.use('/',routers)
