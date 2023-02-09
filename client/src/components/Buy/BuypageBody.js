@@ -31,18 +31,18 @@ export function BuyPageBody() {
   <BuyPageBodyContainer>
     <h3>[Buy Page] 주문결제 페이지</h3>
 
-    <h5>👤 주문자정보</h5>
+    <h5 className="UsIf">👤 주문자정보</h5>
     <div> {userinfo.phoneNumber} / {userinfo.address}</div>
 
-    <h5>📦 배송상품정보 </h5>
+    <h5 className="UsIf">📦 배송상품정보 </h5>
     {checkItems?.map((checkItems, key) =>(
               <div key={key}>
-                <div> <img style={{width: "50px", height: "50px"}} src={checkItems.image} alt="체크된주문사진"/> {checkItems.title} : {checkItems.count}개</div>
+                <div> <img style={{width: "50px", height: "50px"}} src={checkItems.image} alt="체크된주문사진"/> {checkItems.title}({checkItems.price}원) : {checkItems.count}개</div>
               </div>
             ))}
     
-    <h5>💳 결제수단</h5> <p>은행 계좌 <input type="text" /> </p>
-    <h5>💸 결제정보</h5> <p>총가격</p>
+    <h5 className="UsIf">💳 결제수단</h5> <p>은행 계좌 <input type="text" /> </p>
+    <h5 className="UsIf">💸 결제정보</h5> <p>199000원</p>
 
     <Letsbuy>
       <Link to='/ordercompletepage'><button>결제하기</button></Link>
@@ -53,6 +53,9 @@ export function BuyPageBody() {
 const BuyPageBodyContainer = styled.div`
   text-align: center;
   margin: 20px;
+  .UsIf{
+    margin-top: 30px;
+  }
 
 `
 const Letsbuy = styled.div`

@@ -70,9 +70,11 @@ export function CartTable() {
 
   //+,- 누르면 증감되도록하기(근데 왜 전체가 같이 작동하는지?ㅜㅜㅠ)
   const [count, setCount] = useState(1);
+  
   const handleCount = (type) => {
     if (type === "plus") {
       setCount(count + 1);
+      
     } else {
       if (count === 1) return;
       setCount(count - 1);
