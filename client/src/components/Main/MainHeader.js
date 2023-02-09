@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function Header () {
+    const isLogin = sessionStorage.getItem('user');
+    const navigate = useNavigate();
     const LogoutHandler = async() => {
         await axios.get('http://localhost:5000/signout', {withCredentials : true})
-          .then((res) => {console.log(res.data.cookies)})
+          .then((res) => {console.log(res.data.cookies); navigate('/'); sessionStorage.clear()})
           .catch((err) => {console.log(err.message)})
       }
     
@@ -15,10 +17,11 @@ function Header () {
             <ImgBlock src='https://cdn.discordapp.com/attachments/1065825998043631636/1069539124203241502/001.png' />
             <LogoLink to='/'>9UCCI</LogoLink>
             <StyledNav>
-                <JoinLink to='/join'>JOIN</JoinLink>
+                {!isLogin && <><JoinLink to='/join'>JOIN</JoinLink>
                 <LoginLink to='/login'>LOGIN</LoginLink>
-                {/* <StyledButton onClick={LogoutHandler}>Logout</StyledButton> */}
-                <MypageLink to='/mypage'>MY PAGE</MypageLink>
+                <CartLink to='/cart'>CART</CartLink></>}
+                {isLogin && <> <StyledButton onClick={LogoutHandler}>Logout</StyledButton> 
+                <MypageLink to='/mypage'>MY PAGE</MypageLink></>}
             </StyledNav>
             <StyledCategory>
                 <TopLink to='/top'>TOP</TopLink>
@@ -87,7 +90,11 @@ const MypageLink = styled(Link) `
     width: 68px;
     height: 18px;
 `
-
+const CartLink = styled(Link)`
+    
+    width: 36px;
+    height: 18px;
+`
 const StyledCategory = styled.div`
     position: absolute;
     margin : 243px 149px 33px 148px;
@@ -119,6 +126,9 @@ const StyledButton = styled.button `
   line-height : 18px;
   text-align : center;
 
+  width : 65px;
+  height : 18px;
+  
   color : #FFFFFF;
-
+  padding-right : 100px;
 `

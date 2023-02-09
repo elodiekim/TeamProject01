@@ -14,6 +14,7 @@ export function BuyPageBody() {
 
   //체크된파일들
   const [checkItems, setCheckItems] = useState([]);
+  const [userinfo, setUserInfo] = useState([]);
   useEffect(()=>{
     axios.get("/data/checkItems.json").then((data)=>{
       setCheckItems(data.data.checkItems);
@@ -21,21 +22,19 @@ export function BuyPageBody() {
   }, [setCheckItems]);
 
   //userinfor가져오기
-  useEffect(()=>{
-    axios.get("http:localhost:5000/userinfo").then((res) => {
-      console.log(res);
-    }).catch((err)=>{
-      console.log(err);
-    })
-    
-  })
+  const UserInfo = async () => {
+    axios.get('http://localhost:5000/userinfo',{withCredentials:true})
+      .then((res) => {console.log(res.data); setUserInfo(res.data.userinfo)})
+      .catch((err) => {console.log(err.message)})
+}
+  
 
 
   return (
   <BuyPageBodyContainer>
     <h3>[Buy Page] 주문결제 페이지</h3>
-    <h5>👤 주문자정보</h5>
-    <p>{userinfo.name} / {userinfo.phone} / {userinfo.adress} / {userinfo.email}</p>
+    <h5><button onClick={UserInfo}>👤 주문자정보</button></h5>
+    <p> {userinfo.phoneNumber} / {userinfo.address}</p>
     <h5>📦 배송상품정보 </h5>
     {checkItems?.map((checkItems, key) =>(
               <p key={key}>

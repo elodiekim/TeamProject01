@@ -27,6 +27,8 @@ function LoginForm () {
       { withCredentials: true }
       ).then((res) => {
         console.log(res.data);
+        sessionStorage.setItem('user', res)
+        console.log(sessionStorage)
         if(res.data.message == '로그인 성공') {
           navigate('/')
         }
