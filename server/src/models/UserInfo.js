@@ -13,12 +13,12 @@ const userInfoSchema = mongoose.Schema({
     
     imageKey: {
         type: String,
-        default: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.naver.com%2FPostView.naver%3FblogId%3Dgambasg%26logNo%3D222132751279%26categoryNo%3D128%26parentCategoryNo%3D0&psig=AOvVaw2o3QZwmFEP8f6PDGENS-m0&ust=1676012538291000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCIiws7Hvh_0CFQAAAAAdAAAAABAQ"
+        default: "https://cdn.pixabay.com/photo/2017/01/10/03/54/avatar-1968236_960_720.png"
     },
 
     address: {
         type: String,
-        default:"00시 00구 00동"
+        default:"00시 00구"
     },
     address2:{
         type: String,
