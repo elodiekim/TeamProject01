@@ -9,8 +9,7 @@ import axios from 'axios';
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [data, setData] = useState([]);
-
+  const navigate = useNavigate();
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -27,8 +26,12 @@ function LoginForm () {
       //server/app.js 또한 cors로 withCredentials를 적용중.
       { withCredentials: true }
       ).then((res) => {
-        console.log(res.data)
-      }).catch(e=>console.log(e));})()
+        console.log(res.data);
+        if(res.data.message == '로그인 성공') {
+          navigate('/')
+        }
+      }).catch(e=>console.log(e.message));})()
+      
   
   }
 

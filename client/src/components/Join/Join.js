@@ -4,12 +4,13 @@ import Button from "react-bootstrap/Button";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Head from '../Main/MainHeader'
 import axios from 'axios';
 
 function JoinPage() {
 
+    const navigate = useNavigate();
     
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -60,20 +61,23 @@ function JoinPage() {
     }
 
     const onSubmit = (e) => {
-        if(validation()) return;
-        
-        // API Call
-         axios.post('http:localhost:5000/api/signup', {
+        e.preventDefault();
+        if(validation()) {(async () => {
+            await axios.post('http://localhost:5000/signup', {
              email  : email,
              password : password,
-             username : userName,
-         }).then((response) => {
-             console.log('User Data', response.user);
+             name : userName,
+         }, { withCredentials : true}).then((response) => {
+             console.log('User Data', response.data);
              console.log('User Token', response.cookies);
-         })
-        
+             if(response.data.message == '회원가입 성공') {
+                navigate('/login');
+             }
+         }).catch((err) => {console.log(err.message)})
+         })()
+    }   
 
-    }
+}
 
     return (
         <>
@@ -84,25 +88,25 @@ function JoinPage() {
                         <Form.Group as={Row} className="mb-3">
                             <Col sm>
                                 <Form.Control maxLength={50} type="input" placeholder="Email Address" value={email} onChange={onChangeEmail} />
-                                {emailError && <div class="invalid-input">Please enter valid email format.</div>}
+                                {emailError && <div className="invalid-input">Please enter valid email format.</div>}
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
                             <Col sm>
                                 <Form.Control maxLength={20} type="password" placeholder="Password" value={password} onChange={onChangePassword} />
-                                {passwordError && <div class="invalid-input">Password must be at least 8 characters and contain at least one letter and one number. </div>}
+                                {passwordError && <div className="invalid-input">Password must be at least 8 characters and contain at least one letter and one number. </div>}
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
                             <Col sm>
                                 <Form.Control maxLength={20} type="password" placeholder="Confirm Password" value={confirmPassword} onChange={onChangeConfirmPassword} />
-                                {confirmPasswordError && <div class="invalid-input">Those passwords didn't match.</div>}
+                                {confirmPasswordError && <div className="invalid-input">Those passwords didn't match.</div>}
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
                             <Col sm>
                                 <Form.Control maxLength={20} placeholder="Username" value={userName} onChange={onChangeUserName} />
-                                {userNameError && <div class="invalid-input">Required.</div>}
+                                {userNameError && <div className="invalid-input">Required.</div>}
                             </Col>
                         </Form.Group>
                         <br />

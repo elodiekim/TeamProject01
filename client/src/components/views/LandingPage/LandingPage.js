@@ -7,10 +7,10 @@ import Body from '../../Main/MainBody';
 import Footer from '../../Footer/Footer';
 
 function LandingPage() {
-  useEffect(()=>{
-    axios.get('/api/hello')
-    .then(res=>{console.log(res.data)})
-  },[])
+  // useEffect(()=>{
+  //   axios.get('/api/hello')
+  //   .then(res=>{console.log(res.data)})
+  // },[])
   return (
       <>
           <div style={{ display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center' }}>
