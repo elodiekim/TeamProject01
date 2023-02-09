@@ -39,7 +39,9 @@ export function BuyPageBody() {
     <h5>💳 결제수단</h5> <p>은행 계좌 <input type="text" /> </p>
     <h5>💸 결제정보</h5> <p>총가격</p>
 
-    <Link to='/ordercompletepage'><button>결제하기</button></Link>
+    <Letsbuy>
+      <Link to='/ordercompletepage'><button>결제하기</button></Link>
+    </Letsbuy>
   </BuyPageBodyContainer>)
 }
 
@@ -47,4 +49,14 @@ const BuyPageBodyContainer = styled.div`
   text-align: center;
   margin: 20px;
 
+`
+const Letsbuy = styled.div`
+	text-align: center;
+	button {
+		margin: 20px;
+		background-color: grey ;
+		color: white;
+    border: 3px solid;
+    border-radius: 10px;
+	}
 `
