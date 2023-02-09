@@ -1,5 +1,5 @@
 const {Router} = require ('express');
-const read = require('../../services/userinfo/read.js');
+const read = require('../../services/userInfo/read.js');
 
 
 const router =Router();
