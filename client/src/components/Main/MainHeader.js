@@ -1,15 +1,23 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Header () {
-    return (
+    const LogoutHandler = async() => {
+        await axios.get('http://localhost:5000/signout', {withCredentials : true})
+          .then((res) => {console.log(res.data.cookies)})
+          .catch((err) => {console.log(err.message)})
+      }
+    
+      return (
         <StyledDiv>
             <ImgBlock src='https://cdn.discordapp.com/attachments/1065825998043631636/1069539124203241502/001.png' />
             <LogoLink to='/'>9UCCI</LogoLink>
             <StyledNav>
                 <JoinLink to='/join'>JOIN</JoinLink>
                 <LoginLink to='/login'>LOGIN</LoginLink>
+                {/* <StyledButton onClick={LogoutHandler}>Logout</StyledButton> */}
                 <MypageLink to='/mypage'>MY PAGE</MypageLink>
             </StyledNav>
             <StyledCategory>
@@ -102,3 +110,15 @@ const BottomLink = styled(Link) `
     margin-right : 553px;
 `
 
+const StyledButton = styled.button `
+  border : none;
+  background-color : transparent;
+
+  font-weight : 600;
+  font-size : 15px;
+  line-height : 18px;
+  text-align : center;
+
+  color : #FFFFFF;
+
+`

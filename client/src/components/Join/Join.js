@@ -69,7 +69,7 @@ function JoinPage() {
              name : userName,
          }, { withCredentials : true}).then((response) => {
              console.log('User Data', response.data);
-             console.log('User Token', response.cookies);
+             console.log('User Token', response.data.cookies);
              if(response.data.message == '회원가입 성공') {
                 navigate('/login');
              }

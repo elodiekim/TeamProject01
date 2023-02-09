@@ -1,5 +1,4 @@
 import React,{useEffect} from 'react'
-import axios from 'axios'
 // import Body from '../Main/MainBody';
 import Head from '../../Main/MainHeader';
 import styled from 'styled-components'
@@ -11,12 +10,14 @@ function LandingPage() {
   //   axios.get('/api/hello')
   //   .then(res=>{console.log(res.data)})
   // },[])
+
+
   return (
       <>
           <div style={{ display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center' }}>
             <Head></Head>
           </div>
-          <div style={{ padding : '30px',display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center' }}>
+          <div style={{ paddingTop : '30px',display:'flex', flexDirection:'column',justifyContent:'center', alignItems:'center' }}>
             <Body></Body>
           </div>
           <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
