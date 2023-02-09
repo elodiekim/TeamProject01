@@ -14,12 +14,18 @@ export function BuyPageBody() {
 
   //userinfor가져오기    
   const [userinfo, setUserinfo] = useState([]);
-  useEffect(()=>{
-    axios.get('http://localhost:5000/userinfo',{withCredentials:true})
-      .then((res) => {console.log(res.data); setUserinfo(res.data.userinfo)})
-      .catch((err) => {console.log(err.message)})
-  },[setUserinfo])
 
+  const getInfo =async ()=> {
+    const Info = await axios.get(
+      'http://localhost:5000/userinfo'
+    );
+    setUserinfo(Info.data);
+  };
+  useEffect(()=>{
+    getInfo();
+  }, [])
+
+    
 
 
   return (
