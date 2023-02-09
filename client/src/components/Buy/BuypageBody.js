@@ -13,17 +13,16 @@ export function BuyPageBody() {
   }, [setCheckItems]);
 
   //userinfor가져오기    
-  const [userinfo, setUserinfo] = useState([]);
+  const [userinfo, setUserInfo] = useState([]);
 
-  const getInfo =async ()=> {
-    const Info = await axios.get(
-      'http://localhost:5000/userinfo'
-    );
-    setUserinfo(Info.data);
-  };
   useEffect(()=>{
-    getInfo();
-  }, [])
+    axios.get('http://localhost:5000/userinfo',{withCredentials : true})
+      .then((res) => {
+        console.log(res.data);
+        setUserInfo(res.data.userinfo)
+      })
+      .catch((err) => {console.log(err.message)})
+  },[])
 
     
 
@@ -37,9 +36,9 @@ export function BuyPageBody() {
 
     <h5>📦 배송상품정보 </h5>
     {checkItems?.map((checkItems, key) =>(
-              <p key={key}>
+              <div key={key}>
                 <div> <img style={{width: "50px", height: "50px"}} src={checkItems.image} alt="체크된주문사진"/> {checkItems.title} : {checkItems.count}개</div>
-              </p>
+              </div>
             ))}
     
     <h5>💳 결제수단</h5> <p>은행 계좌 <input type="text" /> </p>
