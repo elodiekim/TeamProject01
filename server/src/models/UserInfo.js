@@ -13,17 +13,17 @@ const userInfoSchema = mongoose.Schema({
     
     imageKey: {
         type: String,
-        default: "profile_img"
+        default: "https://cdn.pixabay.com/photo/2017/01/10/03/54/avatar-1968236_960_720.png"
     },
 
     address: {
         type: String,
-        default:"00시 00구 00동"
+        default:"00시 00구"
     },
     address2:{
         type: String,
         default:"000동 000호" 
-    }
+    },
 
 })
 
