@@ -7,7 +7,7 @@ const MyPageBody = () => {
     const [userinfo, setUserInfo] = useState([]);
     const navigate = useNavigate()
     useEffect(()=>{
-        axios.get('http://localhost:5000/userinfo',{withCredentials:true})
+        axios.get(' http://kdt-ai6-team09.elicecoding.com/userinfo',{withCredentials:true})
               .then((res) => {console.log(res.data); setUserInfo(res.data.userinfo)})
               .catch((err) => {console.log(err.message)})
     },[])

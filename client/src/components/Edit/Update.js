@@ -14,7 +14,7 @@ const Update = () => {
     
     const EditHandler = async (e) => {
         e.preventDefault();
-        await axios.put('http://localhost:5000/userinfo',{
+        await axios.put(' http://kdt-ai6-team09.elicecoding.com:5000/userinfo',{
             address : address,
             address2 : address2,
             phoneNumber : number,

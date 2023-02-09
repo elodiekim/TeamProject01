@@ -16,7 +16,7 @@ export function BuyPageBody() {
   const [userinfo, setUserInfo] = useState([]);
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/userinfo',{withCredentials : true})
+    axios.get(' http://kdt-ai6-team09.elicecoding.com:5000/userinfo',{withCredentials : true})
       .then((res) => {
         console.log(res.data);
         setUserInfo(res.data.userinfo)
