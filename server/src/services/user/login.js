@@ -3,6 +3,7 @@ const accessJWTGenerator = require('../../utils/accessJWTGenerator')
 const refreshJWTGenerator = require('../../utils/refreshJWTGenerator')
 const findOneUser = require('../../repo/findOneUser')
 const updateRefreshToken = require('../../repo/updateRefreshToken')
+const checkAdmin = require('../../repo/checkAdmin')
 const login = async (req,res)=>{
     const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
     try {
@@ -24,6 +25,7 @@ const login = async (req,res)=>{
         }
         const access_token = await accessJWTGenerator(user._id)
         const refresh_token = await refreshJWTGenerator(user)
+        const roll = await checkAdmin(user)
         res.cookie("refresh_token",refresh_token,
             // {httpOnly: true,
             // secure: true} // 해당 옵션이 활성화되면 자바에서 접근이 불가능해짐 나중에 배포시 활용할것
@@ -32,7 +34,7 @@ const login = async (req,res)=>{
         res.cookie("access_token",access_token)
         await updateRefreshToken(user._id,refresh_token)
         
-        return res.status(200).send({message:"로그인 성공",Access_token:access_token})
+        return res.status(200).send({message:"로그인 성공",Access_token:access_token, roll : roll})
 
     } catch (error) {
         return res.status(400).send({message:"로그인 실패"})

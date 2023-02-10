@@ -27,10 +27,13 @@ function LoginForm () {
       { withCredentials: true }
       ).then((res) => {
         console.log(res.data);
-        sessionStorage.setItem('user', res)
-        console.log(sessionStorage)
-        if(res.data.message == '로그인 성공') {
+        if(res.data.roll == true) {
           navigate('/')
+          sessionStorage.setItem('admin', res)
+        }
+        else if (res.data.roll == false) {
+          navigate('/')
+          sessionStorage.setItem('user', res)
         }
       }).catch(e=>console.log(e.message));})()
       

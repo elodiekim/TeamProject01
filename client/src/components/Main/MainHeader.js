@@ -5,6 +5,7 @@ import axios from 'axios'
 
 function Header () {
     const isLogin = sessionStorage.getItem('user');
+    const isAdmin = sessionStorage.getItem('admin')
     const navigate = useNavigate();
     const LogoutHandler = async() => {
         await axios.get(' http://localhost:5000/signout', {withCredentials : true})
@@ -17,11 +18,13 @@ function Header () {
             <ImgBlock src='https://cdn.discordapp.com/attachments/1065825998043631636/1069539124203241502/001.png' />
             <LogoLink to='/'>9UCCI</LogoLink>
             <StyledNav>
-                {!isLogin && <><JoinLink to='/join'>JOIN</JoinLink>
+                {!isLogin && !isAdmin && (<><JoinLink to='/join'>JOIN</JoinLink>
                 <LoginLink to='/login'>LOGIN</LoginLink>
-                <CartLink to='/cart'>CART</CartLink></>}
-                {isLogin && <> <StyledButton onClick={LogoutHandler}>Logout</StyledButton> 
+                <CartLink to='/cart'>CART</CartLink></>)}
+                {isLogin && <> <StyledButton onClick={LogoutHandler}>LOGUT</StyledButton> 
                 <MypageLink to='/mypage'>MY PAGE</MypageLink></>}
+                {isAdmin && <><AdminLink to='/admin'>ADMIN</AdminLink>
+                <StyledButton onClick={LogoutHandler}>LOGOUT</StyledButton><MypageLink to='/mypage'>MY PAGE</MypageLink></>}
             </StyledNav>
             <StyledCategory>
                 <TopLink to='/top'>TOP</TopLink>
@@ -83,6 +86,11 @@ const JoinLink = styled(Link)`
 
 const LoginLink = styled(Link) `
     margin-right: 73px;
+    width: 47px;
+    height: 18px;
+`
+const AdminLink = styled(Link) `
+    margin-right: 40px;
     width: 47px;
     height: 18px;
 `
