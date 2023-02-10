@@ -93,9 +93,15 @@ export function CartTable() {
 
   //전체금액 구하기
   const [total, setTotal] = useState(0);
+<<<<<<< HEAD
 
 
 
+=======
+  //const buychecked = (current) => {
+     //setTotal(current+carts.price*count)
+   //}
+>>>>>>> 481ef7bff0375ed454add99428e049c874994984
 
   
 
@@ -166,6 +172,7 @@ const Table = styled.div`
   // background-color: lightgreen;
   text-align: center;
   margin: 20px;
+  width : 100vh;
   table {
     width: 100%;
     border-top: 1px solid grey;

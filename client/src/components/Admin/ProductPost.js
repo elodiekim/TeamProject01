@@ -28,9 +28,6 @@ const ProductPost = () => {
             navigate(`/admin`);
         })
           .catch((err) => {console.log(err.message)})
-        
-        await axios.get('http://localhost:5000/products')
-          .then(res => console.log(res.data))
     }
     
     return(
