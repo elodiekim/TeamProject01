@@ -12,6 +12,14 @@ const MyPageBody = () => {
               .catch((err) => {console.log(err.message)})
     },[])
 
+    // const DeleteHandler = async (e) => {
+    //     e.preventDefault();
+    //     await axios.delete('http://localhost:5000/signin',{withCredentials : true})
+    //       .then((res) => {console.log(res.data)})
+    //       .catch((err) => {console.log(err.message)})
+
+    // }
+
     return(
         <>
             <InfoImg src={userinfo.imageKey} alt="profile-img" />
