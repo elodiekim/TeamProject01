@@ -22,7 +22,7 @@ function OrderTrackingPage() {
 
   return (<>
     <Header/>
-    <MyPageNav/>
+    <Div><MyPageNav/></Div>
       <Title>
         <h4>[주문/배송 조회하기]</h4>
       </Title>
@@ -32,7 +32,7 @@ function OrderTrackingPage() {
         {checkItems?.map((checkItems, key) =>(
           <div key={key}>
             <div> 
-              <img style={{width: "200px", height: "200px"}} src={checkItems.image} alt="체크된주문사진"/> 
+              <img style={{width: "100px", height: "100px"}} src={checkItems.image} alt="체크된주문사진"/> 
               <p>{checkItems.title}</p> 
               <p>({checkItems.count}개)</p>
             </div>
@@ -77,11 +77,10 @@ padding-top: 50px;
 `
 
 const Ordertracking = styled.div`
-
-display: flex;
-  text-align: center;
-  padding: 50px;
-  
+display : flex;
+flex-direction : row;
+justify-content : center;
+align-items : center;
 `
 const Orderlists = styled.div`
   border: solid grey;
@@ -97,7 +96,8 @@ text-align: center;
   }
 `
 const OrderStatus = styled.div`
-border: solid grey;
+border-left: solid grey;
+border-right: solid grey;
 border-radius: 50px;
 padding: 10px;
   margin: 30px;
@@ -112,7 +112,13 @@ text-align:center;
 padding: 80px;
  margin: auto;
 //  background-color: blue;
+`
 
+const Div = styled.div`
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
 
 `
 
