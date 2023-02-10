@@ -20,7 +20,7 @@ function LoginForm () {
       // 데이터를 보낼 수 있는 형식으로 라우터를 바꿨음
       // server/router/login => router.get에서 router.post로 변경
       await axios.post(
-      ' http://kdt-ai6-team09.elicecoding.com/signin',
+      ' http://kdt-ai6-team09.elicecoding.com:5000/signin',
       {email:email,password:password},
       //다른 포트간에 쿠키를 주고받을때 withCredentials는 필수.
       //server/app.js 또한 cors로 withCredentials를 적용중.
