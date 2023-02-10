@@ -14,6 +14,7 @@ const ProductGet = () => {
             .catch(e => console.log(e.message))
     },[])
 
+
     return (
         <>
         {product.map((product, Idx) => (
@@ -23,6 +24,11 @@ const ProductGet = () => {
                 <div>Product Name = {product.title}</div>
                 <div>Product Description = {product.description}</div>
                 <div>Product Price = {product.price}</div>
+                <button onClick={async ()=>{
+                    await axios.delete(`http://localhost:5000/products/${product.product_no}`, {withCredentials : true})
+                      .then(res => console.log(res.data))
+                      .catch(e => console.log(e.message))
+                }}>DELETE</button>
             </Div>
         </Wrap>
         ))
