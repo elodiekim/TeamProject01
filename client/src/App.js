@@ -17,6 +17,7 @@ import JoinPage from './components/views/JoinPage/JoinPage'
 import AdminPage from './components/views/AdminPage/AdminPage';
 import MyPage from './components/views/MyPage/MyPage'
 import EditPage from './components/views/EditPage/EditPage';
+import OrderTrackingPage from './components/views/MyPage/OrderTrackingPage';
 import ProductEditPage from './components/views/EditPage/ProductEditPage';
 import ProductPostPage from './components/views/PostPage/ProductPostPage';
 
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/join" element = {<JoinPage />} />
           <Route exact path="/admin" element = {<AdminPage />} />
           <Route exact path="/edit" element = {<EditPage />} />
+          <Route exact path="/ordertracking" element = {<OrderTrackingPage />} />
           <Route exact path="/productedit" element = {<ProductEditPage />} />
           <Route exact path="/productpost" element = {<ProductPostPage />} />
         </Routes>
