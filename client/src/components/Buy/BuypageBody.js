@@ -32,7 +32,7 @@ export function BuyPageBody() {
     <h3>[Buy Page] 주문결제 페이지</h3>
 
     <h5 className="UsIf">👤 주문자정보</h5>
-    <div> {userinfo.phoneNumber} / {userinfo.address}</div>
+    <div> {userinfo.phoneNumber} / {userinfo.address} {userinfo.address2}</div>
 
     <h5 className="UsIf">📦 배송상품정보 </h5>
     {checkItems?.map((checkItems, key) =>(
