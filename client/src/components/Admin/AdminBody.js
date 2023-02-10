@@ -9,7 +9,7 @@ export function AdminBody() {
     <h2>관리자 페이지 입니다</h2>
 		<AdminButtonsGroup>
 			<Link to='/productedit'><button className="adminButtons">상품정보 수정</button></Link>
-      <Link to='/'><button className="adminButtons">카테고리 수정</button></Link>
+      <Link to='/productpost'><button className="adminButtons">상품 등록</button></Link>
 		</AdminButtonsGroup>
     <AdminButtonsGroup>
 			{/* <Link to='/'><button className="adminButtons">고객 정보수정</button></Link>
