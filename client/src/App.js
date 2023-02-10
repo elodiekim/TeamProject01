@@ -10,6 +10,8 @@ import {
 import LandingPage from './components/views/LandingPage/LandingPage'
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import TopPage from './components/views/ProductPage/TopPage';
+import ProductDetailPage from './components/views/ProductPage/ProductDetailPage';
 import CartPage from './components/views/CartPage/CartPage'
 import BuyPage from './components/views/BuyPage/BuyPage'
 import OrderCompletePage from './components/views/BuyPage/OrderCompletePage';
@@ -30,6 +32,8 @@ function App() {
           <Route exact path="/" element = {<LandingPage />} />
           <Route exact path="/register" element = {<RegisterPage />} />
           <Route exact path="/login" element = {<LoginPage />} />
+          <Route exact path="/Top" element = {<TopPage />} />
+          <Route exact path="/Detail" element = {<ProductDetailPage />} />
           <Route exact path="/cart" element = {<CartPage />} />
           <Route exact path="/buypage" element = {<BuyPage />} />
           <Route exact path="/ordercompletepage" element = {<OrderCompletePage />} />
