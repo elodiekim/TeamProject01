@@ -6,38 +6,42 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FloatingLabel } from 'react-bootstrap';
 import axios from 'axios';
 
-const Update = () => {
+const ProductUpdate = () => {
     const navigate = useNavigate();
-    const [address, setAddress] = useState('');
-    const [address2, setAddress2] = useState('');
-    const [number, setNumber] = useState('');
+    const [id, setId] = useState();
+    const [title, setTitle] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState(0);
     
     const EditHandler = async (e) => {
         e.preventDefault();
-        await axios.put(' http://kdt-ai6-team09.elicecoding.com:5000/userinfo',{
-            address : address,
-            address2 : address2,
-            phoneNumber : number,
+        await axios.put(`http://localhost:5000/products/${id}`,{
+            title : title,
+            category : category,
+            price : price,
         },{withCredentials: true})
           .then((res) => {
             console.log(res.data);
-            if(res.data.message == 'SUCCESS UPDATE PROFILE') {
-                navigate('/mypage');
-            }
+            navigate(`/${category}`)
         })
           .catch((err) => {console.log(err.message)})
+
+        await axios.get(`http://localhost:5000/products/${id}`,).then(res => console.log(res.data))
     }
     
     return(
         <Wrap>
-        <FloatingLabel controlId='floatingAddress' label='도로명 주소' className='mb-3' onChange={(e) => setAddress(e.target.value)}>
+        <FloatingLabel controlId='floatingNumber' label='Product Number' className='mb-3' onChange={(e) => setId(e.target.value)}>
+            <Form.Control type="Number" />
+        </FloatingLabel>
+        <FloatingLabel controlId='floatingTitle' label='Product Name' className='mb-3' onChange={(e) => setTitle(e.target.value)}>
             <Form.Control type="String" />
         </FloatingLabel>
-        <FloatingLabel controlId='floatingAddress2' label='상세 주소' className='mb-3' onChange={(e) => setAddress2(e.target.value)}>
+        <FloatingLabel controlId='floatingCategory' label='Product Category' className='mb-3' onChange={(e) => setCategory(e.target.value)}>
             <Form.Control type="String" />
         </FloatingLabel>
-        <FloatingLabel controlId='floatingNumber' label='휴대폰 번호' className='mb-3' onChange={(e) => setNumber(e.target.value)}>
-            <Form.Control type="String" />
+        <FloatingLabel controlId='floatingPrice' label='Product Price' className='mb-3' onChange={(e) => setPrice(e.target.value)}>
+            <Form.Control type="Number" />
         </FloatingLabel>
       <ButtonWrap>
         <Button type="submit" onClick={EditHandler}>EDIT</Button>
@@ -46,7 +50,7 @@ const Update = () => {
     )
 }
 
-export default Update;
+export default ProductUpdate;
 
 const Wrap = styled.div `
   display : flex;

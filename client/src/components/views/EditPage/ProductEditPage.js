@@ -1,18 +1,19 @@
 import React from 'react';
-import Update from '../../Edit/Update';
+import ProductUpdate from '../../Edit/ProductEdit';
 import Head from '../../Main/MainHeader';
 import styled from 'styled-components';
 
-const EditPage = () => {
+
+const ProductEditPage = () => {
     return(
         <Div>
             <Head></Head>
-            <Update></Update>
+            <ProductUpdate></ProductUpdate>
         </Div>
     )
 }
 
-export default EditPage;
+export default ProductEditPage;
 
 const Div = styled.div `
     display : flex;

@@ -8,12 +8,12 @@ export function AdminBody() {
   <AdminBodyContainer>
     <h2>관리자 페이지 입니다</h2>
 		<AdminButtonsGroup>
-			<Link to='/'><button className="adminButtons">상품정보 수정</button></Link>
+			<Link to='/productedit'><button className="adminButtons">상품정보 수정</button></Link>
       <Link to='/'><button className="adminButtons">카테고리 수정</button></Link>
 		</AdminButtonsGroup>
     <AdminButtonsGroup>
-			<Link to='/'><button className="adminButtons">고객 정보수정</button></Link>
-      <Link to='/'><button className="adminButtons">블라블라 수정</button></Link>
+			{/* <Link to='/'><button className="adminButtons">고객 정보수정</button></Link>
+      <Link to='/'><button className="adminButtons">블라블라 수정</button></Link> */}
 		</AdminButtonsGroup>
 	</AdminBodyContainer>
   )
