@@ -11,19 +11,19 @@ import axios from "axios";
 
 export function CartTable() {
 
-  //카트의 데이터 받아오기
-  const [carts, setCarts] = useState([]);
-  //임의로 지정한 경로
+  //카트의 데이터 받아오기(서버연결성공)
+  const [products, setProducts] = useState([]);
+  
   useEffect(()=>{
-    axios.get("/data/carts.json").then((data)=>{
-      setCarts(data.data.carts);
-    });
-  }, [setCarts]);
-  
+    axios.get(' http://localhost:5000/products',{withCredentials : true})
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+      })
+      .catch((err) => {console.log(err.message)})
+  },[])
 
 
-
-  
 
 	// 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
@@ -49,7 +49,7 @@ export function CartTable() {
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      carts.forEach((el) => idArray.push(el.id));
+      products.forEach((el) => idArray.push(el.id));
       setCheckItems(idArray);
     } else {
       // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
@@ -57,9 +57,9 @@ export function CartTable() {
     }
   }
 
-  //선택상품 삭제??????
+  //선택상품 삭제 (ok)
   const handleRemove = (id) => {
-    setCarts(carts.filter((carts) => carts.id !== id));
+    setProducts(products.filter((products) => products.id !== id));
     setCheckItems(checkItems.filter((check) => parseInt(check) !== id));
   };
 
@@ -68,24 +68,37 @@ export function CartTable() {
 
 
 
-  //+,- 누르면 증감되도록하기(근데 왜 전체가 같이 작동하는지?ㅜㅜㅠ)
-  const [count, setCount] = useState(1);
-  
+  // //+,- 누르면 증감되도록하기
+  const [counter, setCounter] = useState(1);
   const handleCount = (type) => {
     if (type === "plus") {
-      setCount(count + 1);
+      setCounter(counter + 1);
       
     } else {
-      if (count === 1) return;
-      setCount(count - 1);
+      if (counter === 1) return;
+      setCounter(counter - 1);
     }
   }
+
+  
+  // const handleCount = (type, id) => {
+  //   if (type === "plus") {
+  //     const idx = products.find((el)=> el.id === id);
+  //     setProducts(products[idx].__v + 1);
+  //   } else {
+  //     if (counter === 1) return;
+  //     const idx = products.find((el)=> el.id === id);
+  //     setProducts(products[idx].__v - 1)
+  //   }
+  // }
 
   //전체금액 구하기
   const [total, setTotal] = useState(0);
   //const buychecked = (current) => {
      //setTotal(current+carts.price*count)
    //}
+
+  
 
 
 
@@ -100,6 +113,7 @@ export function CartTable() {
               <td><input type="checkbox"
                         name='select-all'
                         onChange={(e) => handleAllCheck(e.target.checked)}
+                        checked={checkItems.length === products.length ? true : false}
                         />
 							</td>
               <td>Product img</td>
@@ -109,42 +123,38 @@ export function CartTable() {
 						</tr>
 					</thead>
 
-          <tbody  className="`&{carts.id}`-row"> 
-            {carts?.map((carts, key) =>(
-              <tr key={key}>
+          <tbody> 
+            {products?.map((product, idx) =>(
+              <tr key={idx}>
                 <td><input type="checkbox" 
-                          name={`select-${carts.id}`}
+                          name={`select-${product.id}`}
                           onChange={(e) => {
-                            handleSingleCheck(e.target.checked, carts.id);
-                            
-                          }
-                            
-                          }
-                          // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                          checked={checkItems.includes(carts.id) ? true : false}
+                            handleSingleCheck(e.target.checked, product.id);
+                          }}
+                          checked={checkItems.includes(product.id) ? true : false}
                           
                           />
                 </td>
-								<td><img style={{width: "100px", height: "100px"}} src={carts.image} alt="상품사진" ></img></td>
-                <td> {carts.title}</td>   
+								<td><img style={{width: "100px", height: "100px"}} src={product.imgUrl} alt="상품사진" ></img></td>
+                <td> {product.title} </td>   
                 <td>
-                  <div> { count }개</div>
+                  <div> {counter}개 </div>
                   <div>
-                    <button onClick={()=> handleCount("minus")}> −</button>
-                    <button onClick={()=> handleCount("plus")}> +</button>
+                    <button onClick={()=> handleCount("minus", product.id)}> −</button>
+                    <button onClick={()=> handleCount("plus", product.id)}> +</button>
                   </div>
                 </td>
-                <td>{carts.price*count}원</td>  
+                <td>{product.price * counter}원</td>  
               </tr>
             ))}
-
               <tr>
-                  <td><button className="delete" onClick={()=> handleRemove((carts.id))}>선택상품 삭제</button></td>  
-                  <td></td>    
-                  <td></td>
-                  <td></td>
-                  <td>{total} 원</td>
-              </tr>
+                    <td><button className="delete" onClick={()=> handleRemove((products.id))}>선택상품 삭제</button></td>  
+                    <td></td>    
+                    <td></td>
+                    <td></td>
+                    <td>{total} 원</td>
+                </tr>
+              
                     
           </tbody>
         </table>
