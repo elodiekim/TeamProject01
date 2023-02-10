@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
+import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
 
 const MyPageBody = () => {
@@ -25,7 +26,7 @@ const MyPageBody = () => {
             <InfoImg src={userinfo.imageKey} alt="profile-img" />
             <InfoText>address = {userinfo.address} {userinfo.address2}</InfoText>
             <InfoText>phoneNumber = {userinfo.phoneNumber}</InfoText>
-            <button onClick={()=>{navigate('/edit')}}>Edit</button>
+            <Button style={{ width : '100px' , fontWeight : '600', fontSize : '20px'}} onClick={()=>{navigate('/edit')}}>Edit</Button>
         </>
     )
 }

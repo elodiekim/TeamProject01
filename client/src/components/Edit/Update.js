@@ -30,13 +30,13 @@ const Update = () => {
     
     return(
         <Wrap>
-        <FloatingLabel controlId='floatingAddress' label='Address' className='mb-3' onChange={(e) => setAddress(e.target.value)}>
+        <FloatingLabel controlId='floatingAddress' label='도로명 주소' className='mb-3' onChange={(e) => setAddress(e.target.value)}>
             <Form.Control type="String" />
         </FloatingLabel>
-        <FloatingLabel controlId='floatingAddress2' label='address2' className='mb-3' onChange={(e) => setAddress2(e.target.value)}>
+        <FloatingLabel controlId='floatingAddress2' label='상세 주소' className='mb-3' onChange={(e) => setAddress2(e.target.value)}>
             <Form.Control type="String" />
         </FloatingLabel>
-        <FloatingLabel controlId='floatingNumber' label='number' className='mb-3' onChange={(e) => setNumber(e.target.value)}>
+        <FloatingLabel controlId='floatingNumber' label='휴대폰 번호' className='mb-3' onChange={(e) => setNumber(e.target.value)}>
             <Form.Control type="String" />
         </FloatingLabel>
       <ButtonWrap>

@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { Link, useNavigate } from 'react-router-dom'
-import Head from '../Main/MainHeader'
 import axios from 'axios';
 
 function JoinPage() {
@@ -81,7 +80,6 @@ function JoinPage() {
 
     return (
         <>
-            <Head></Head>
             <div>
                 <Container style={{padding : '30px'}} className="panel">
                     <Form>
