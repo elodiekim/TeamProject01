@@ -6,7 +6,7 @@ const ProductGet = () => {
     
     const [product, setProduct] = useState([]);
     useEffect(() => {
-        axios.get(`http://kdt-ai6-team09.elicecoding.com//products`, {withCredentials : true})
+        axios.get(`http://kdt-ai6-team09.elicecoding.com/products`, {withCredentials : true})
             .then((res) => {
                 console.log(res.data);
                 setProduct(res.data);
