@@ -23,6 +23,8 @@ import OrderTrackingPage from './components/views/MyPage/OrderTrackingPage';
 import ProductEditPage from './components/views/EditPage/ProductEditPage';
 import ProductPostPage from './components/views/PostPage/ProductPostPage';
 import DeleteOrderPage from './components/views/MyPage/DeleteOrderPage';
+import ProductGetPage from './components/views/PostPage/ProductGetPage';
+
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
           <Route exact path="/productedit" element = {<ProductEditPage />} />
           <Route exact path="/productpost" element = {<ProductPostPage />} />
           <Route exact path="/deleteorder" element = {<DeleteOrderPage />} />
+          <Route exact path="/product" element = {<ProductGetPage />} />
 
         </Routes>
       </div>
