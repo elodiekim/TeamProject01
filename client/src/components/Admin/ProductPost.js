@@ -8,7 +8,6 @@ import axios from 'axios';
 
 const ProductPost = () => {
     const navigate = useNavigate();
-    const [number, setNumber] = useState();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
@@ -17,8 +16,7 @@ const ProductPost = () => {
     
     const EditHandler = async (e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:5000/products`,{
-            product_no : number,
+        await axios.post('http://localhost:5000/products',{
             title : title,
             description : description,
             category : category,
@@ -30,13 +28,13 @@ const ProductPost = () => {
             navigate(`/admin`);
         })
           .catch((err) => {console.log(err.message)})
+        
+        await axios.get('http://localhost:5000/products')
+          .then(res => console.log(res.data))
     }
     
     return(
         <Wrap>
-        <FloatingLabel controlId='floatingNumber' label='Product Number' className='mb-3' onChange={(e) => setNumber(e.target.value)}>
-            <Form.Control type="Number" />
-        </FloatingLabel>
         <FloatingLabel controlId='floatingTitle' label='Product Name' className='mb-3' onChange={(e) => setTitle(e.target.value)}>
             <Form.Control type="String" />
         </FloatingLabel>
