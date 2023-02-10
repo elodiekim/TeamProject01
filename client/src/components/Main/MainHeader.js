@@ -7,7 +7,7 @@ function Header () {
     const isLogin = sessionStorage.getItem('user');
     const navigate = useNavigate();
     const LogoutHandler = async() => {
-        await axios.get(' http://kdt-ai6-team09.elicecoding.com:5000/signout', {withCredentials : true})
+        await axios.get(' http://localhost:5000/signout', {withCredentials : true})
           .then((res) => {console.log(res.data.cookies); navigate('/'); sessionStorage.clear()})
           .catch((err) => {console.log(err.message)})
       }

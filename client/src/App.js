@@ -17,6 +17,7 @@ import JoinPage from './components/views/JoinPage/JoinPage'
 import AdminPage from './components/views/AdminPage/AdminPage';
 import MyPage from './components/views/MyPage/MyPage'
 import EditPage from './components/views/EditPage/EditPage';
+import ProductEditPage from './components/views/EditPage/ProductEditPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/join" element = {<JoinPage />} />
           <Route exact path="/admin" element = {<AdminPage />} />
           <Route exact path="/edit" element = {<EditPage />} />
+          <Route exact path="/productedit" element = {<ProductEditPage />} />
         </Routes>
       </div>
     </Router>
