@@ -8,7 +8,7 @@ export function MyPageNav(){
     <FlexContainer>
       <FlexItem><StyledLink to='/mypage'>MY ACCOUNT</StyledLink></FlexItem>
       <FlexItem>|</FlexItem>
-      <FlexItem><StyledLink to='/cart'>SHOPPING BAG (3)</StyledLink></FlexItem>
+      <FlexItem><StyledLink to='/cart'>SHOPPING BAG (16)</StyledLink></FlexItem>
       <FlexItem>|</FlexItem>
       <FlexItem><StyledLink to='/ordertracking'>ORDER TRACKING</StyledLink></FlexItem>
     </FlexContainer>
