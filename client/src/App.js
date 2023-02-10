@@ -10,6 +10,8 @@ import {
 import LandingPage from './components/views/LandingPage/LandingPage'
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import TopPage from './components/views/ProductPage/TopPage';
+import ProductDetailPage from './components/views/ProductPage/ProductDetailPage';
 import CartPage from './components/views/CartPage/CartPage'
 import BuyPage from './components/views/BuyPage/BuyPage'
 import OrderCompletePage from './components/views/BuyPage/OrderCompletePage';
@@ -20,6 +22,7 @@ import EditPage from './components/views/EditPage/EditPage';
 import OrderTrackingPage from './components/views/MyPage/OrderTrackingPage';
 import ProductEditPage from './components/views/EditPage/ProductEditPage';
 import ProductPostPage from './components/views/PostPage/ProductPostPage';
+import DeleteOrderPage from './components/views/MyPage/DeleteOrderPage';
 
 function App() {
   return (
@@ -29,6 +32,8 @@ function App() {
           <Route exact path="/" element = {<LandingPage />} />
           <Route exact path="/register" element = {<RegisterPage />} />
           <Route exact path="/login" element = {<LoginPage />} />
+          <Route exact path="/Top" element = {<TopPage />} />
+          <Route exact path="/Detail" element = {<ProductDetailPage />} />
           <Route exact path="/cart" element = {<CartPage />} />
           <Route exact path="/buypage" element = {<BuyPage />} />
           <Route exact path="/ordercompletepage" element = {<OrderCompletePage />} />
@@ -39,6 +44,8 @@ function App() {
           <Route exact path="/ordertracking" element = {<OrderTrackingPage />} />
           <Route exact path="/productedit" element = {<ProductEditPage />} />
           <Route exact path="/productpost" element = {<ProductPostPage />} />
+          <Route exact path="/deleteorder" element = {<DeleteOrderPage />} />
+
         </Routes>
       </div>
     </Router>

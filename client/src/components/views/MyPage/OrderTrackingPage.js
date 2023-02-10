@@ -48,7 +48,7 @@ function OrderTrackingPage() {
               <Link to='/edit'><button>주문 정보 수정하기</button></Link>
             </Cont>
             <Cont>
-              <Link to='/'><button>주문 취소하기</button></Link>
+              <Link to='/deleteorder'><button>주문 취소하기</button></Link>
             </Cont>
           </Status>
           <Status>
