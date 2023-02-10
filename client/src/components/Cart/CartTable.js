@@ -79,7 +79,6 @@ export function CartTable() {
       setCounter(counter - 1);
     }
   }
-
   
   // const handleCount = (type, id) => {
   //   if (type === "plus") {
@@ -94,9 +93,9 @@ export function CartTable() {
 
   //전체금액 구하기
   const [total, setTotal] = useState(0);
-  // const buychecked = () => {
-  //   setTotal
-  // }
+
+
+
 
   
 
@@ -144,7 +143,7 @@ export function CartTable() {
                     <button onClick={()=> handleCount("plus", product.id)}> +</button>
                   </div>
                 </td>
-                <td>{product.price * counter}원</td>  
+                <td>{product.price * counter}원</td>
               </tr>
             ))}
               <tr>
@@ -152,7 +151,7 @@ export function CartTable() {
                     <td></td>    
                     <td></td>
                     <td></td>
-                    <td>{total} 원</td>
+                    <td>{total}원</td>
                 </tr>
               
                     
